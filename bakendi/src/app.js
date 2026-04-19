@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'kraftur-vef2.netlify.app'
+    'https://kraftur-vef2.netlify.app'
   ],
 }));
 
