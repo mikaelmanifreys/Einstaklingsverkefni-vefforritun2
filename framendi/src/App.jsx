@@ -37,7 +37,7 @@ function App() {
   useEffect(() => {
     if (!user) return;
 
-    fetch(`http://localhost:3000/api/workouts?userId=${user.id}`)
+    fetch(`https://einstaklingsverkefni-vefforritun2.onrender.com/api/workouts?userId=${user.id}`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -55,7 +55,7 @@ function App() {
   useEffect(() => {
     if (!user) return;
 
-    fetch(`http://localhost:3000/api/exercises?username=${user.username}`)
+    fetch(`https://einstaklingsverkefni-vefforritun2.onrender.com/api/exercises?username=${user.username}`)
       .then((res) => res.json())
       .then((data) => setCustomExercises(data))
       .catch((err) => console.error('Exercise fetch error:', err));
@@ -84,7 +84,7 @@ function App() {
     console.log('newWorkout being sent:', JSON.stringify(newWorkout, null, 2));
 
     try {
-      const response = await fetch('http://localhost:3000/api/workouts', {
+      const response = await fetch('https://einstaklingsverkefni-vefforritun2.onrender.com/api/workouts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/workouts/${id}?userId=${user.id}`,
+        `https://einstaklingsverkefni-vefforritun2.onrender.com/api/workouts/${id}?userId=${user.id}`,
         {
           method: 'DELETE',
         }
@@ -158,7 +158,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/api/auth/login', {
+      const response = await fetch('https://einstaklingsverkefni-vefforritun2.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -193,7 +193,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/api/auth/signup', {
+      const response = await fetch('https://einstaklingsverkefni-vefforritun2.onrender.com/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -249,7 +249,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/exercises', {
+      const response = await fetch('https://einstaklingsverkefni-vefforritun2.onrender.com/api/exercises', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
