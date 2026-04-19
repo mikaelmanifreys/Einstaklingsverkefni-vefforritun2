@@ -1,0 +1,50 @@
+const express = require('express');
+
+const router = express.Router();
+
+const customExercises = [
+  { username: 'admin', name: 'Snatch' },
+];
+
+router.get('/', (req, res) => {
+  const username = req.query.username;
+
+  if (!username) {
+    return res.status(400).json({ error: 'Username is required' });
+  }
+
+  const userExercises = customExercises.filter(
+    (exercise) => exercise.username === username
+  );
+
+  res.json(userExercises);
+});
+
+router.post('/', (req, res) => {
+  const { username, name } = req.body;
+
+  if (!username || !name) {
+    return res.status(400).json({ error: 'Username and exercise name are required' });
+  }
+
+  const existingExercise = customExercises.find(
+    (exercise) =>
+      exercise.username === username &&
+      exercise.name.toLowerCase() === name.toLowerCase()
+  );
+
+  if (existingExercise) {
+    return res.status(400).json({ error: 'Exercise already exists' });
+  }
+
+  const newExercise = {
+    username,
+    name,
+  };
+
+  customExercises.push(newExercise);
+
+  res.status(201).json(newExercise);
+});
+
+module.exports = router;

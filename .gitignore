@@ -1,0 +1,6 @@
+framendi/node_modules/
+bakendi/node_modules/
+
+bakendi/.env
+framendi/.env
+.env
