@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
 
@@ -9,7 +8,13 @@ const exercisesRouter = require('./routes/exercises');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'kraftur-vef2.netlify.app'
+  ],
+}));
+
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
